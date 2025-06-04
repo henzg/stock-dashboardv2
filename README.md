@@ -34,9 +34,9 @@ npm run prod
 - [x] Set up monorepo/project folders (`backend/`, `frontend/`, root `README`, etc.)
 - [x] Initialize Node.js backend with `package.json` and `.env`
 - [x] Add Docker/Docker Compose with Postgres (for scalable dev/prod workflow)
-- [ ] Create base Express app with health check route (e.g., `/api/health`)
+- [x] Create base Express app with health check route (e.g., `/api/health`)
 - [x] Integrate `dotenv` for config management
-- [ ] Setup Git and `.gitignore`
+- [x] Setup Git and `.gitignore`
 
 ---
 
