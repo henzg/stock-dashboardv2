@@ -42,11 +42,11 @@ npm run prod
 
 ## Phase 2: API Foundations (Core API Features)
 - [x] Finnhub integration utility and basic “get stock quote” endpoint
-- [ ] Error handling for API calls
-- [ ] Endpoint: **Get stock details** (e.g., `/api/stock/:symbol`)
-- [ ] Endpoint: **Get company profile** (e.g., `/api/company/:symbol`)
-- [ ] Endpoint: **Get historical prices** (optional, e.g., `/api/stock/:symbol/history`)
-- [ ] Endpoint: **Search stocks** (e.g., `/api/search?q=...`)
+- [x] Error handling for API calls
+- [x] Endpoint: **Get stock details** (e.g., `/api/stock/:symbol`)
+- [x] Endpoint: **Get company profile** (e.g., `/api/company/:symbol`)
+- [x] Endpoint: **Get historical prices** (optional, e.g., `/api/stock/:symbol/history`)
+- [x] Endpoint: **Search stocks** (e.g., `/api/search?q=...`)
 - [ ] (Optional) Add caching for popular endpoints (in-memory or Redis)
 - [ ] Secure API keys and sensitive data
 - [ ] API documentation (e.g., with Swagger/OpenAPI or markdown)
