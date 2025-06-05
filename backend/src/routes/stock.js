@@ -7,6 +7,45 @@ import { searchStock } from '../utils/alphaVantage.js';
 
 const router = Router();
 
+/**
+ * @swagger
+ * /stock/search:
+ *   get:
+ *     summary: Search for stocks
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: keyword to search for (company name or symbol)
+ *     responses:
+ *       200:
+ *         description: Search results
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   symbol:
+ *                     type: string
+ *                     description: Stock symbol
+ *                   name:
+ *                     type: string
+ *                     description: Company name
+ *                   type:
+ *                     type: string
+ *                   region:
+ *                     type: string
+ *                   currency:
+ *                     type: string
+ *       400:
+ *         description: Query param "q" is required
+ *       500:
+ *         description: Faile to search for stocks
+ */
 router.get('/search', async (req,res) => {
   try {
     const { q } = req.query;
@@ -20,7 +59,25 @@ router.get('/search', async (req,res) => {
   }
 });
 
-// gets basic info about stock from finnhub api
+
+/**
+ * @swagger
+ * /stock/{symbol}:
+ *   get:
+ *     summary: Get real-time stock quote. Uses Finnhub
+ *     parameters:
+ *       - in: path
+ *         name: symbol
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The stock symbol
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Error fetching stock data
+ */ 
 router.get('/:symbol', async (req, res) => {
   try {
     const data = await getStockQuote(req.params.symbol);
@@ -31,7 +88,24 @@ router.get('/:symbol', async (req, res) => {
   }
 });
 
-// uses alphaVantage api
+/**
+ * @swagger
+ * stock/{symbol}/history:
+ *   get:
+ *     summary: Get historical daily stock prices. Uses alphaVantage
+ *     parameters:
+ *       - in: path
+ *         name: symbol
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The stock symbol
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Error fetching stock data
+ */ 
 router.get('/:symbol/history', async (req,res) => {
     try {
         const data = await getStockHistory(req.params.symbol);

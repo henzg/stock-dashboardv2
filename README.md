@@ -27,6 +27,10 @@ npm run prod
 - (eslint + prettier = code formatting)
 - (jest = automated testing)
 
+- Additional modules added throughout the dev process
+- (rate-limiter) npm install express-rate-limit
+- (swagger) npm install swagger-ui-express swagger-jsdoc
+
 
 # 🛣️ Stock Dashboard Project Roadmap
 
@@ -48,13 +52,13 @@ npm run prod
 - [x] Endpoint: **Get historical prices** (optional, e.g., `/api/stock/:symbol/history`)
 - [x] Endpoint: **Search stocks** (e.g., `/api/search?q=...`)
 - [ ] (Optional) Add caching for popular endpoints (in-memory or Redis)
-- [ ] Secure API keys and sensitive data
-- [ ] API documentation (e.g., with Swagger/OpenAPI or markdown)
+- [x] Secure API keys and sensitive data
+- [x] API documentation (e.g., with Swagger/OpenAPI or markdown) = Should continue to expand on this when polishing up the application or add more routes
 
 ---
 
 ## Phase 3: User & Portfolio Features
-- [ ] User management: Create/test users (auth can be simple at first, e.g. mock or JWT later)
+- [x] User management: Create/test users (auth can be simple at first, e.g. mock or JWT later) = using in-memory array for users for the moment. Should implement something like oauth eventually
 - [ ] Portfolio endpoints: Add/remove stocks to a user's portfolio
 - [ ] Portfolio: Get full user portfolio with live quote enrichment
 - [ ] Portfolio: Calculate and return gain/loss, current value, etc.
