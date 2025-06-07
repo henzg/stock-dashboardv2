@@ -28,7 +28,7 @@ export default function PortfolioPage() {
             <ul className="pl-4 list-disc">
               {portfolio.holdings.map(h => (
                 <li key={h.symbol}>
-                  <span className="text-blue-800">{h.symbol}:</span> {h.quantity}
+                  <span className="text-blue-800"><Link href={`/company/${h.symbol}`}>{h.symbol}</Link>:</span> {h.quantity}
                 </li>
               ))}
             </ul>

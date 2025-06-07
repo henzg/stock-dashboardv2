@@ -3,10 +3,40 @@ import { portfolios } from '../data/users.js';
 
 const router = Router();
 
+/**
+ * @swagger
+ * /portfolio:
+ *   get:
+ *     summary: Gets all portfolios
+ *     responses:
+ *       200:
+ *         description: Displays all user portfolios
+ *       404:
+ *         description: No portfolios found
+ */ 
 router.get('/', (req,res)=>{
+    // if(!portfolios) res.status(404).json({ error: 'No portfolios found'})
     return res.json(portfolios)
-})
+});
 
+/**
+ * @swagger
+ * /portfolio/{userId}:
+ *   get:
+ *     summary: Gets a users portfolio info
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *          type: number
+ *         description: A users Id     
+ *     responses:
+ *       200:
+ *         description: Displays a users portfolio
+ *       404:
+ *         description: User id doesnt have a portfolio
+ */ 
 router.get('/:userId', (req,res) => {
     const userId = Number(req.params.userId);
     const portfolio = portfolios.find(p => p.userId === userId);
