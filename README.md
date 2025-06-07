@@ -84,7 +84,7 @@ npm run prod
 ---
 
 ## Phase 6: Frontend Kickoff (React/Next.js or your stack)
-- [ ] Bootstrap frontend with your chosen stack (e.g., Next.js with Tailwind)
+- [x] Bootstrap frontend with your chosen stack (e.g., Next.js with Tailwind)
 - [ ] Connect to backend API: Test endpoints in the UI
 - [ ] Build dashboard layout: Sidebar, main content, navigation
 - [ ] Display stock info, company data, historical charts

@@ -1,11 +1,7 @@
 import { Router } from 'express';
+import { users } from '../data/users.js';
 
 const router = Router();
-
-const users = [
-    { id: 1, username: 'demo', email: 'demo@example.com' },
-    { id: 2, username: 'zac', email: 'zac@example.com'},
-];
 
 // gets all users
 router.get('/', (req, res) => {

@@ -7,12 +7,14 @@ import express from 'express';
 import rateLimit from 'express-rate-limit';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
+import cors from 'cors';
 // module imports from files
 import stockRoutes from './routes/stock.js';
 import companyRoutes from './routes/company.js';
 import logger from './utils/logger.js';
 import swaggerDefinition from './docs/swagger.js';
 import userRoutes from './routes/user.js';
+import portfolioRoutes from './routes/portfolio.js';
 
 const app = express();
 app.use(express.json());
@@ -34,6 +36,8 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use(cors({ origin: "http://localhost:3000" }));
+
 // health check route
 app.get('/api/health', (req,res)=> {
   res.status(200).json({ status: 'ok' });
@@ -43,6 +47,7 @@ app.get('/api/health', (req,res)=> {
 app.use('/api/stock', defaultLimiter, stockRoutes);
 app.use('/api/company', defaultLimiter, companyRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/portfolio', portfolioRoutes);
 
 // connection
 const port = process.env.PORT || 8000;
