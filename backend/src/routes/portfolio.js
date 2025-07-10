@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { portfolios } from '../data/users.js';
+import { portfolios, users } from '../data/users.js';
 
 const router = Router();
 
@@ -15,8 +15,14 @@ const router = Router();
  *         description: No portfolios found
  */ 
 router.get('/', (req,res)=>{
-    // if(!portfolios) res.status(404).json({ error: 'No portfolios found'})
-    return res.json(portfolios)
+    const enrichedPortfolios = portfolios.map(portfolio => {
+        const user = users.find(u => u.id == portfolio.userId);
+        return {
+            ...portfolio,
+            username: user ? user.username : `User ${portfolio.userId}`
+        };
+    });
+    res.json(enrichedPortfolios)
 });
 
 /**
@@ -70,6 +76,30 @@ router.post('/:userId/add', (req,res) => {
     }
 
     res.json(portfolio);
+});
+
+
+router.delete('/:userId/:symbol', (req,res) => {    
+    const userId = Number(req.params.userId);
+    const symbol = req.params.symbol;
+
+    if (!userId || !symbol) 
+        return res.status(400).json("Symbol and userId required.");
+
+    // need more checks
+    const portfolio = portfolios.find(p => p.userId === userId);
+    if (!portfolio) {
+        return res.status(404).json({ error: "Portfolio not found. "});
+    }
+
+    const holdingIndex = portfolio.holdings.findIndex(h => h.symbol === symbol);
+    if (holdingIndex === -1) {
+        return res.status(404).json({ error: "Holding not found"});
+    }
+
+    portfolio.holdings.splice(holdingIndex, 1);
+
+    res.json({ message: "Removed successfully", portfolio});
 });
 
 export default router;

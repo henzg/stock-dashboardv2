@@ -16,7 +16,7 @@ export default function UsersPage() {
     if (loading) return <div className="p-8 tex-center">Loading users...</div>
 
     return (
-        <div className="max-w-2x1 mx-auto mt-10 p-4 bg-white rounded-x1 shadow">
+        <div className="max-w-2x1 mx-auto mt-10 p-4 bg-black rounded-x1 shadow">
             <h1 className="text-2x1 font-bold mb-6 text-center">Users</h1>
             <ul className="space-y-4">
                 {users.map(user => (

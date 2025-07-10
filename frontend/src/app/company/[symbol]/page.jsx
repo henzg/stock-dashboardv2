@@ -27,6 +27,10 @@ export default function CompanyPage() {
         <div>
             <h1>Company Information</h1>
                 <p>Name: <span>{company.name}</span></p>
+                <img src={company.logo} alt={company.name} className="mb-4 w-32 h-32 object-contain rounded shadow" />
+                <p>Country: <span>{company.country}</span></p>
+                <p>Exchange: <span>{company.exchange}</span></p>
+                <p>IPO Date: <span>{company.ipo}</span></p>
                 <p>Website <span>{company.weburl}</span></p>
                 <Link href="/portfolios" className="text-blue-600 underline">Back to portfolios</Link>                                
         </div>

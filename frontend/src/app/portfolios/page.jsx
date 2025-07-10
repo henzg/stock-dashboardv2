@@ -23,7 +23,7 @@ export default function PortfolioPage() {
         {portfolio.map((portfolio) => (
           <li key={portfolio.userId} className="border-b pb-2">
             <div className="font-semibold mb-1">
-                <Link href={`/portfolios/${portfolio.userId}`}>User {portfolio.userId}</Link>
+                <Link href={`/portfolios/${portfolio.userId}`}>User {portfolio.username}</Link>
                 </div>
             <ul className="pl-4 list-disc">
               {portfolio.holdings.map(h => (
